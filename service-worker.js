@@ -1,44 +1,42 @@
-# D&D Initiative Tracker — wersja testowa
+const CACHE_NAME = "initiative-tracker-v3";
+const APP_FILES = [
+  "./",
+  "./index.html",
+  "./style.css",
+  "./app.js",
+  "./manifest.json",
+  "./icons/icon-192.png",
+  "./icons/icon-512.png"
+];
 
-Prosta statyczna aplikacja PWA dla Mistrza Gry, przeznaczona do publikacji na GitHub Pages.
+self.addEventListener("install", (event) => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(APP_FILES))
+  );
+  self.skipWaiting();
+});
 
-## Funkcje
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    caches.keys().then((keys) =>
+      Promise.all(keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key)))
+    )
+  );
+  self.clients.claim();
+});
 
-- kafelki uczestników walki,
-- automatyczne sortowanie według inicjatywy,
-- ręczne rozstrzyganie remisów przyciskiem między kafelkami,
-- edycja imienia, typu, inicjatywy i KP,
-- dodawanie przeciwników,
-- oznaczanie uczestników jako pokonanych,
-- reset walki,
-- zapis lokalny przez localStorage,
-- działanie offline po publikacji jako PWA.
+self.addEventListener("fetch", (event) => {
+  if (event.request.method !== "GET") return;
 
-## Pliki
+  event.respondWith(
+    caches.match(event.request).then((cachedResponse) => {
+      if (cachedResponse) return cachedResponse;
 
-- `index.html` — struktura aplikacji
-- `style.css` — wygląd
-- `app.js` — logika aplikacji
-- `manifest.json` — konfiguracja PWA
-- `service-worker.js` — działanie offline
-- `icons/` — ikony aplikacji
-
-## Uwaga
-
-Domyślne postacie graczy mają robocze nazwy i KP. Można je zmienić w aplikacji albo później bezpośrednio w kodzie.
-
-
-## Zmiany w wersji testowej 2
-
-- Kolory kafelków zależą od typu uczestnika: gracz, wróg, boss, NPC/sojusznik.
-- Podczas edycji inicjatywy kafelek nie przeskakuje na nowe miejsce.
-- Sortowanie listy po zmianie inicjatywy następuje dopiero po zakończeniu edycji.
-
-
-## Zmiany w wersji testowej 3
-
-- Domyślne postacie graczy to: Meepo, Ariah, Tulia i Mannon.
-- Domyślne ikony graczy: sztylet, tarcza, łuk i błyskawica.
-- Domyślna KP graczy wynosi 20.
-- Nowo dodawane kafelki startują z KP 20.
-- Klucz localStorage zmieniono na `dnd-initiative-tracker-v2`, żeby wersja testowa startowała ze świeżymi danymi domyślnymi.
+      return fetch(event.request).then((networkResponse) => {
+        const responseCopy = networkResponse.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, responseCopy));
+        return networkResponse;
+      });
+    })
+  );
+});

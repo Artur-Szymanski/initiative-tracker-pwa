@@ -1,48 +1,25 @@
-<!doctype html>
-<html lang="pl">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#160d2b">
-  <meta name="description" content="Prosty tracker inicjatywy do D&D 5e 2024.">
-  <link rel="manifest" href="manifest.json">
-  <link rel="icon" href="icons/icon-192.png">
-  <link rel="apple-touch-icon" href="icons/icon-192.png">
-  <link rel="stylesheet" href="style.css">
-  <title>D&D Initiative Tracker</title>
-</head>
-<body>
-  <main class="app-shell">
-    <header class="app-header">
-      <div class="symbol" aria-hidden="true">✦</div>
-      <h1>D&D Initiative Tracker</h1>
-      <p>Śledź kolejność tur w walce. Kafelki sortują się automatycznie według inicjatywy.</p>
-    </header>
-
-    <section class="top-panel" aria-label="Sterowanie walką">
-      <button id="addButton" class="primary-button" type="button">+ Dodaj wroga</button>
-      <button id="resetButton" class="secondary-button" type="button">Reset</button>
-    </section>
-
-    <section class="hint-card" aria-label="Instrukcja">
-      <p><strong>Wskazówka:</strong> kliknij <strong>Edytuj</strong>, aby ustawić inicjatywę i KP. Przy remisie pojawi się przycisk <strong>↕ Zamień remis</strong> między kafelkami.</p>
-    </section>
-
-    <section id="combatantList" class="combatant-list" aria-live="polite"></section>
-
-    <footer>
-      <p>Wersja testowa — zapis lokalny przez localStorage.</p>
-    </footer>
-  </main>
-
-  <template id="emptyTemplate">
-    <article class="empty-state">
-      <h2>Brak aktywnych uczestników</h2>
-      <p>Dodaj wroga albo użyj Reset, aby przywrócić postacie graczy.</p>
-    </article>
-  </template>
-
-  <noscript>Ta aplikacja wymaga włączonego JavaScriptu.</noscript>
-  <script src="app.js" defer></script>
-</body>
-</html>
+{
+  "name": "D&D Initiative Tracker",
+  "short_name": "Initiative",
+  "description": "Prosty tracker inicjatywy dla Mistrza Gry.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0d0717",
+  "theme_color": "#160d2b",
+  "lang": "pl",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
