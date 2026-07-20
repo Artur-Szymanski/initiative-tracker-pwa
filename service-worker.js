@@ -1,10 +1,11 @@
-const CACHE_NAME = "initiative-tracker-v3";
+const CACHE_NAME = "initiative-tracker-v6";
 const APP_FILES = [
   "./",
   "./index.html",
   "./style.css",
   "./app.js",
   "./manifest.json",
+  "./service-worker.js",
   "./icons/icon-192.png",
   "./icons/icon-512.png"
 ];
@@ -19,7 +20,11 @@ self.addEventListener("install", (event) => {
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
-      Promise.all(keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key)))
+      Promise.all(
+        keys
+          .filter((key) => key !== CACHE_NAME)
+          .map((key) => caches.delete(key))
+      )
     )
   );
   self.clients.claim();
@@ -34,7 +39,9 @@ self.addEventListener("fetch", (event) => {
 
       return fetch(event.request).then((networkResponse) => {
         const responseCopy = networkResponse.clone();
-        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, responseCopy));
+        caches.open(CACHE_NAME).then((cache) => {
+          cache.put(event.request, responseCopy);
+        });
         return networkResponse;
       });
     })

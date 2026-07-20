@@ -1,44 +1,33 @@
-# D&D Initiative Tracker — wersja testowa
+# D&D Initiative Tracker — v5
 
-Prosta statyczna aplikacja PWA dla Mistrza Gry, przeznaczona do publikacji na GitHub Pages.
+Prosta aplikacja PWA do śledzenia inicjatywy w D&D.
 
-## Funkcje
+## Nowości w wersji 5
 
-- kafelki uczestników walki,
-- automatyczne sortowanie według inicjatywy,
-- ręczne rozstrzyganie remisów przyciskiem między kafelkami,
-- edycja imienia, typu, inicjatywy i KP,
-- dodawanie przeciwników,
-- oznaczanie uczestników jako pokonanych,
-- reset walki,
-- zapis lokalny przez localStorage,
-- działanie offline po publikacji jako PWA.
+- Nowo dodana postać pojawia się na początku listy i od razu otwiera tryb edycji.
+- Nowy kafelek pozostaje przypięty na górze do kliknięcia „Gotowe”.
+- Po zakończeniu edycji kafelek trafia na właściwe miejsce według inicjatywy.
+- Aktualna tura jest oznaczona grubą białą ramką.
+- Aktywny kafelek ma przycisk przejścia do następnej tury.
+- Po turze ostatniej postaci oznaczenie wraca do pierwszej.
+- Licznik rund zwiększa się automatycznie przy przejściu z ostatniej postaci do pierwszej.
+- Przed pierwszym użyciem przycisku następnej tury oznaczenie automatycznie wskazuje postać z najwyższą inicjatywą.
+- Stan walki, aktualna tura oraz numer rundy są zapisywane w localStorage.
 
-## Pliki
+## Pozostałe funkcje
 
-- `index.html` — struktura aplikacji
-- `style.css` — wygląd
-- `app.js` — logika aplikacji
-- `manifest.json` — konfiguracja PWA
-- `service-worker.js` — działanie offline
-- `icons/` — ikony aplikacji
-
-## Uwaga
-
-Domyślne postacie graczy mają robocze nazwy i KP. Można je zmienić w aplikacji albo później bezpośrednio w kodzie.
+- Cztery domyślne postacie: Meepo, Ariah, Tulia i Mannon.
+- Domyślna KP: 20.
+- Kolory kafelków zależne od typu.
+- Automatyczne sortowanie inicjatywy.
+- Ręczne rozstrzyganie remisów.
+- Oznaczanie uczestników jako pokonanych.
+- Reset walki.
+- Tryb PWA i działanie offline.
 
 
-## Zmiany w wersji testowej 2
+## Poprawka w wersji 6
 
-- Kolory kafelków zależą od typu uczestnika: gracz, wróg, boss, NPC/sojusznik.
-- Podczas edycji inicjatywy kafelek nie przeskakuje na nowe miejsce.
-- Sortowanie listy po zmianie inicjatywy następuje dopiero po zakończeniu edycji.
-
-
-## Zmiany w wersji testowej 3
-
-- Domyślne postacie graczy to: Meepo, Ariah, Tulia i Mannon.
-- Domyślne ikony graczy: sztylet, tarcza, łuk i błyskawica.
-- Domyślna KP graczy wynosi 20.
-- Nowo dodawane kafelki startują z KP 20.
-- Klucz localStorage zmieniono na `dnd-initiative-tracker-v2`, żeby wersja testowa startowała ze świeżymi danymi domyślnymi.
+- Pole Klasy Pancerza ma teraz zawsze kształt niewielkiej kapsułki.
+- Nieaktywny kafelek nie rozciąga już pola KP do kształtu koła.
+- Układ pola KP i przycisku następnej tury pozostaje poprawny również na wąskich ekranach.

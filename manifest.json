@@ -1,7 +1,7 @@
 {
   "name": "D&D Initiative Tracker",
   "short_name": "Initiative",
-  "description": "Prosty tracker inicjatywy dla Mistrza Gry.",
+  "description": "Aplikacja PWA do śledzenia inicjatywy, tur i rund w D&D.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

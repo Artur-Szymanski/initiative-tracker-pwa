@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#160d2b">
-  <meta name="description" content="Prosty tracker inicjatywy do D&D 5e 2024.">
+  <meta name="description" content="Aplikacja PWA do śledzenia inicjatywy w D&D.">
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="icons/icon-192.png">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
@@ -14,33 +14,34 @@
 <body>
   <main class="app-shell">
     <header class="app-header">
-      <div class="symbol" aria-hidden="true">✦</div>
+      <div class="symbol" aria-hidden="true">⚔️</div>
       <h1>D&D Initiative Tracker</h1>
-      <p>Śledź kolejność tur w walce. Kafelki sortują się automatycznie według inicjatywy.</p>
+      <p>Śledź kolejność tur w walce. Kafelki sortują się według inicjatywy.</p>
     </header>
 
-    <section class="top-panel" aria-label="Sterowanie walką">
+    <section class="toolbar" aria-label="Główne akcje">
       <button id="addButton" class="primary-button" type="button">+ Dodaj wroga</button>
+      <div class="round-pill" aria-live="polite">Runda <strong id="roundNumber">1</strong></div>
       <button id="resetButton" class="secondary-button" type="button">Reset</button>
-    </section>
-
-    <section class="hint-card" aria-label="Instrukcja">
-      <p><strong>Wskazówka:</strong> kliknij <strong>Edytuj</strong>, aby ustawić inicjatywę i KP. Przy remisie pojawi się przycisk <strong>↕ Zamień remis</strong> między kafelkami.</p>
     </section>
 
     <section id="combatantList" class="combatant-list" aria-live="polite"></section>
 
+    <p class="hint">
+      Nowy kafelek pozostaje na górze do zakończenia edycji. Biała ramka wskazuje aktualną turę.
+    </p>
+
+    <template id="emptyTemplate">
+      <article class="empty-state">
+        <h2>Brak aktywnych uczestników</h2>
+        <p>Dodaj wroga albo użyj resetu, aby przywrócić postacie graczy.</p>
+      </article>
+    </template>
+
     <footer>
-      <p>Wersja testowa — zapis lokalny przez localStorage.</p>
+      <p>Wersja testowa v5 — zapis lokalny przez localStorage.</p>
     </footer>
   </main>
-
-  <template id="emptyTemplate">
-    <article class="empty-state">
-      <h2>Brak aktywnych uczestników</h2>
-      <p>Dodaj wroga albo użyj Reset, aby przywrócić postacie graczy.</p>
-    </article>
-  </template>
 
   <noscript>Ta aplikacja wymaga włączonego JavaScriptu.</noscript>
   <script src="app.js" defer></script>
