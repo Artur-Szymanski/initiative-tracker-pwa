@@ -417,22 +417,97 @@ footer p { margin-bottom: 0; }
 }
 
 @media (max-width: 26rem) {
-  .card-main { grid-template-columns: 4rem 2.4rem 1fr; }
+  .card-main {
+    grid-template-columns: 3.7rem 2.15rem minmax(0, 1fr) auto;
+    gap: 0.5rem;
+    padding: 0.8rem;
+  }
+
+  .initiative-box {
+    min-height: 3.75rem;
+  }
+
+  .initiative-value {
+    font-size: 1.75rem;
+  }
+
+  .icon-box {
+    font-size: 1.65rem;
+  }
+
+  .combatant-name {
+    font-size: 1.05rem;
+  }
+
+  .combatant-meta {
+    font-size: 0.82rem;
+  }
+
   .right-stack {
-    grid-column: 2 / 4;
-    grid-row: 2;
-    flex-direction: row;
+    grid-column: auto;
+    grid-row: auto;
+    flex-direction: column;
+    align-items: flex-end;
     justify-content: flex-start;
-    align-items: center;
+  }
+
+  .turn-next-button {
+    width: 2.55rem;
+    min-height: 2.25rem;
+    font-size: 1.3rem;
   }
 
   .ac-badge {
-    align-self: center;
+    align-self: flex-end;
+    min-height: 2rem;
+    padding: 0.3rem 0.55rem;
+    font-size: 0.92rem;
   }
-  .toolbar { grid-template-columns: 1fr; }
+
+  .card-actions {
+    padding-right: 0.8rem;
+    padding-bottom: 0.8rem;
+    padding-left: 0.8rem;
+  }
+
+  .toolbar {
+    grid-template-columns: 1fr;
+  }
+
   .round-pill {
     grid-column: 1;
     grid-row: auto;
+  }
+}
+
+@media (max-width: 21rem) {
+  .card-main {
+    grid-template-columns: 3.45rem 1.9rem minmax(0, 1fr) auto;
+    gap: 0.38rem;
+    padding: 0.7rem;
+  }
+
+  .icon-box {
+    font-size: 1.45rem;
+  }
+
+  .combatant-name {
+    font-size: 0.98rem;
+  }
+
+  .combatant-meta {
+    font-size: 0.76rem;
+  }
+
+  .turn-next-button {
+    width: 2.35rem;
+    min-height: 2.1rem;
+  }
+
+  .ac-badge {
+    min-height: 1.9rem;
+    padding: 0.25rem 0.45rem;
+    font-size: 0.86rem;
   }
 }
 

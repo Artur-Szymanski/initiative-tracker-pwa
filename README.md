@@ -31,3 +31,11 @@ Prosta aplikacja PWA do śledzenia inicjatywy w D&D.
 - Pole Klasy Pancerza ma teraz zawsze kształt niewielkiej kapsułki.
 - Nieaktywny kafelek nie rozciąga już pola KP do kształtu koła.
 - Układ pola KP i przycisku następnej tury pozostaje poprawny również na wąskich ekranach.
+
+
+## Poprawka w wersji 7
+
+- Strzałka następnej tury i pole KP pozostają po prawej stronie także na wąskich ekranach.
+- Usunięto przenoszenie prawej kolumny do drugiego wiersza.
+- Na małych ekranach zmniejszane są odstępy, ikony i rozmiary tekstu.
+- Kafelki są niższe i lepiej wykorzystują dostępną szerokość.

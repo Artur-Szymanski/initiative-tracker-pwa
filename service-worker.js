@@ -1,4 +1,4 @@
-const CACHE_NAME = "initiative-tracker-v6";
+const CACHE_NAME = "initiative-tracker-v7";
 const APP_FILES = [
   "./",
   "./index.html",
